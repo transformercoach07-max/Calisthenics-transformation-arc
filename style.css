@@ -1,0 +1,509 @@
+/* =========================
+   CALISTHENICS ARC — THEME
+   Mobile-first, clamp-based, with a dedicated desktop treatment.
+
+   IMPORTANT: this CSS alone can't fix a page that renders "zoomed out"
+   on phones. That happens when the HTML is missing (or has a broken):
+
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   in the <head>. Without it, mobile browsers fake a ~980px-wide
+   viewport and scale the whole page down — which is why the deployed
+   GitHub Pages version looks shrunken compared to a normal preview.
+   Make sure that tag is present before anything else.
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    padding: clamp(20px, 6vw, 36px) clamp(18px, 5vw, 28px);
+    background: #05070B;
+    color: #F5F7FF;
+    font-family: Arial, sans-serif;
+    line-height: 1.65;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Center all page content and cap width so nothing stretches oddlyon tablets/desktops. Slightly wider than before so desktop has a
+   bit more presence without going full-width. */
+body > * {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================
+   MAIN TITLE
+   ========================= */
+h1 {
+    font-size: clamp(32px, 9.5vw, 54px);
+    font-weight: 900;
+    background: linear-gradient(90deg, blue, cyan);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    line-height: 1.15;
+    margin: 0 0 14px;
+    word-wrap: break-word;
+}
+
+/* DESCRIPTION */
+
+p {
+    color: #A7B0C2;
+    font-size: clamp(16px, 4.4vw, 19px);
+    margin: 16px 0 32px;
+}
+
+/* HEADINGS */
+
+h2 {
+    color: #FFFFFF;
+    font-size: clamp(23px, 6.5vw, 30px);
+    margin-top: 38px;
+    line-height: 1.3;
+}
+
+/* LIST */
+
+ul {
+    color: #C4CBDA;
+    padding-left: clamp(22px, 6vw, 30px);
+    font-size: clamp(15.5px, 4vw, 17px);
+    line-height: 1.8;
+}
+
+/* "ONLY IF" / IMPORTANT TEXT */
+
+h3 {
+    color: #FF3158;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: clamp(17px, 4.8vw, 21px);
+}
+
+/* TABLE / CONDITION BOX */
+
+table {
+    width: 100%;
+    max-width: 520px;
+    margin: 22px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #303747;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #10141D;
+}
+
+td {
+    padding: clamp(13px, 3.8vw, 16px) clamp(14px, 4.5vw, 18px);
+    color: #DCE2EF;
+    border-bottom: 1px solid #303747;
+    font-size: clamp(15px, 4vw, 17px);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+button {
+    display: block;
+    width: 100%;
+    max-width: 440px;
+
+    margin: 20px auto;
+    padding: clamp(15px, 4vw, 18px) clamp(20px, 5vw, 26px);
+
+    background: #2563EB;
+    color: #FFFFFF;
+
+    border: 1px solid #3B82F6;
+    border-radius: 12px;
+
+    font-size: clamp(16px, 4.4vw, 19px);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.35);
+
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background: #3B82F6;
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 12px rgba(59, 130, 246, 0.5),
+        0 0 28px rgba(59, 130, 246, 0.25);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+body > h2:last-of-type {
+    margin-top: 54px;
+}
+
+/* =========================
+   ASSESSMENT POPUP
+   ========================= */
+
+.assessment-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: clamp(14px, 4.5vw, 22px);
+}
+
+.assessment-box {
+    background: #111;
+    color: white;
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: clamp(20px, 5.5vw, 28px);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    margin: 0; /* overrides the body > * auto-centering rule for this fixed popup */
+}
+
+.assessment-box h2 {
+    margin-top: 0;
+    font-size: clamp(21px, 6vw, 27px);
+}
+
+.subtitle {
+    color: #aaa;
+    font-size: clamp(14px, 3.8vw, 16px);
+}
+
+.exercise-section {
+    margin-top: 26px;
+    padding: clamp(15px, 4.5vw, 19px);
+    border-radius: 15px;
+    background: #1c1c1c;
+}
+
+.exercise-section h3 {
+    margin-top: 0;
+}
+
+.exercise-section label {
+    display: block;
+    margin-top: 13px;
+    margin-bottom: 7px;
+    color: #bbb;
+    font-size: clamp(14px, 3.8vw, 16px);
+}
+
+.exercise-section select,
+.exercise-section input {
+    width: 100%;
+    padding: clamp(11px, 3.2vw, 13px);
+    border-radius: 10px;
+    border: none;
+    background: #292929;
+    color: white;
+    box-sizing: border-box;
+    font-size: clamp(15px, 3.8vw, 17px);
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 26px;
+    padding: clamp(15px, 4vw, 17px);
+    border: none;
+    border-radius: 12px;
+    background: #fff;
+    color: #000;
+    font-size: clamp(15px, 3.8vw, 17px);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn {
+    float: right;
+    background: none;
+    border: none;
+    color: white;
+    font-size: clamp(23px, 6.5vw, 29px);
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* =========================
+   PATH SELECTION
+   ========================= */
+
+#pathSelection {
+    text-align: center;
+    padding: clamp(22px, 5.5vw, 32px) 0;
+}
+
+#pathSelection button {
+    width: 100%;
+    max-width: 420px;
+    padding: clamp(16px, 4.4vw, 19px);
+    margin: 11px auto;
+    border: none;
+    border-radius: 15px;
+    background: #1d1d1d;
+    color: white;
+    font-size: clamp(16px, 4.4vw, 19px);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#pathSelection button:hover {
+    transform: translateY(-3px);
+}
+
+/* =========================
+   ARC SCREEN
+   ========================= */
+
+#arcScreen {
+    padding: clamp(20px, 5.5vw, 28px) clamp(16px, 4.5vw, 22px);
+    min-height: 100vh;
+    background: #05070b;
+    color: white;
+    text-align: center;
+}
+
+#arcScreen > * {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#backHome {
+    padding: 11px 20px;
+    border-radius: 10px;
+    border: 1px solid #174ea6;
+    background: #080b11;
+    color: white;
+    cursor: pointer;
+    font-size: clamp(15px, 3.8vw, 17px);
+    width: auto;
+    max-width: 200px;
+}
+
+#backHome:hover {
+    background: #101a2b;
+}
+
+#pathTitle {
+    font-size: clamp(26px, 7.5vw, 34px);
+    margin-top: 27px;
+    margin-bottom: 6px;
+    color: white;
+}
+
+#pathSubtitle {
+    color: #aeb7ca;
+    font-size: clamp(16px, 4.4vw, 19px);
+    line-height: 1.5;
+    margin-bottom: 32px;
+}
+
+/* =========================
+   ARC CARDS
+   ========================= */
+
+.arcCard {
+    text-align: left;
+    background: #0a0d13;
+    border: 1px solid #1c2635;
+    border-radius: 18px;
+    padding: clamp(17px, 5.5vw, 24px);
+    margin: 22px 0;
+    transition: 0.25s;
+}
+
+.arcCard.unlocked {
+    border-color: #174ea6;
+}
+
+.arcCard.unlocked:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(25, 100, 255, 0.25);
+}
+
+.arcCard.locked {
+    opacity: 0.5;
+    border-color: #242a34;
+}
+
+.arcNumber {
+    color: #3980ff;
+    font-size: clamp(12.5px, 3.2vw, 14.5px);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.arcCard h2 {
+    color: white;
+    font-size: clamp(20px, 6vw, 26px);
+    margin: 9px 0;
+}
+
+.arcDays {
+    color: #7f8ba0;
+    font-weight: bold;
+    font-size: clamp(14px, 3.8vw, 16px);
+}
+
+.arcDescription {
+    margin-top: 19px;
+    color: #c5ccda;
+    line-height: 1.75;
+    font-size: clamp(15px, 3.8vw, 17px);
+}
+
+.arcDescription strong {
+    color: white;
+}
+
+.lockedText {
+    color: #ff3155;
+    font-weight: bold;
+    margin-top: 22px;
+    font-size: clamp(15px, 3.8vw, 17px);
+}
+
+.current-badge {
+    display: inline-block;
+    margin-top: 11px;
+    padding: 8px 13px;
+    border-radius: 20px;
+    background: #ff2d55;
+    color: white;
+    font-size: clamp(10.5px, 2.6vw, 11.5px);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.locked-badge {
+    display: inline-block;
+    margin-top: 11px;
+    padding: 8px 13px;
+    border-radius: 20px;
+    background: #292929;
+    color: #777;
+    font-size: clamp(10.5px, 2.6vw, 11.5px);
+    font-weight: bold;
+}
+
+/* =========================
+   ENTER ARC BUTTON
+   ========================= */
+
+.enterArcBtn {
+    width: 100%;
+    padding: clamp(13px, 3.8vw, 15px);
+    margin-top: 16px;
+    border: 1px solid #347cff;
+    border-radius: 10px;
+    background: #145bea;
+    color: white;
+    font-size: clamp(15px, 3.8vw, 17px);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(30, 100, 255, 0.25);
+}
+
+.enterArcBtn:hover {
+    background: #236df5;
+    box-shadow: 0 0 25px rgba(30, 100, 255, 0.45);
+}
+
+/* =========================
+   SPLIT & TIME SELECTION BUTTONS
+   ========================= */
+
+#splitButtons,
+#timeButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+/* =========================
+   DESKTOP TREATMENT
+   Below ~900px this is just the mobile layout, centered.
+   Above it, give the content a bit more presence instead of
+   looking like a narrow phone column floating on a big screen.
+   ========================= */
+
+@media (min-width: 900px) {
+    body {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        background:
+            radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.10), transparent 55%),
+            #05070B;
+    }
+
+    body > * {
+        max-width: 760px;
+    }
+
+    #arcScreen > * {
+        max-width: 760px;
+    }
+
+    h1 {
+        line-height: 1.1;
+    }
+
+    .arcCard.unlocked:hover {
+        transform: translateY(-6px);
+    }
+
+    #pathSelection button:hover,
+    button:hover {
+        transform: translateY(-3px);
+    }
+}
+
+/* =========================
+   MOBILE FINE-TUNING
+   (clamp() handles most scaling already —
+   this just tightens spacing on very small screens)
+   ========================= */
+
+@media (max-width: 400px) {
+    body {
+        padding: 18px 14px;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}
